@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=4 uid="uid://c58gxgfcec1m5"]
+
+[ext_resource type="Script" path="res://scripts/dice_control.gd" id="1_easmn"]
+[ext_resource type="Texture2D" uid="uid://dpocgtsprnsfd" path="res://assets/meshes/six_sided_die/six_side_die_colored_dice_map.png" id="2_p8q4l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxmfy"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("2_p8q4l")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ftcee"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQABwABAAMABwAFAAEA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP////8AAAAAAAAAAAAAAAD//wAAAAD//wAA//8AAP///////wAA//8AAAAAAAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_iujaq"]
+resource_name = "six_side_die_colored_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("//8HwPvfC6DxfwfA//8D4Pvf///xfwPg9J8HwPi/C6D0nwfA9J8D4Pi////0nwPg+98HwPvfB8D73wfA+98D4PvfA+D73wPg+L8HwPi/B8D4vwfA+L8D4Pi/A+D4vwPg"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AgALAAUAAgAIAAsABgAVAAkABgASABUAFAARABcAFAAOABEADAADAA8ADAAAAAMABwANABMABwABAA0AFgAEAAoAFgAQAAQA"),
+"material": SubResource("StandardMaterial3D_wxmfy"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(1.99913, 2.00096, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP////8AAAAA//9U1QAAAAD/////AAD///////8AAP////9U1QAA////////AAAAAAAA//8AAAAAAABU1QAAAAAAAP//AAD//wAA//8AAP//AABU1QAA//8AAP////8AAP///////wAA//9U1f//AAD///////////////////////9U1f////////////8AAAAA/////wAAAABU1f//AAAAAP///////wAA////////AABU1f////8AAP///3//f6oqVNX/P/9//3//f6qqqqr/P/9/////f6oqVNX/P/9/////f6qqqqr/P/9//3//f6oqVNX/v/9//3//f6qqqqr/v/9/////f6oqVNX/v/9/////f6qqqqr/v/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ftcee")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0u043"]
+
+[node name="dice_six_sides" type="RigidBody3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_easmn")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("ArrayMesh_iujaq")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_0u043")
